@@ -1,0 +1,428 @@
+#
+#  Copyright © 2011-2012 BiKE, SNU. All Rights Reserved.
+#
+#  This work is licensed under the Creative Commons Attribution 3.0 Unported License.
+#  To view a copy of this license, visit http://creativecommons.org/licenses/by/3.0/
+#  or send a letter to Creative Commons, 444 Castro Street, Suite 900, Mountain View,
+#  California, 94041, USA.
+#
+#  This copyright applies only to the CDT Ontology Specification and accompanying
+#  documentation in RDF; it does not apply to CDT data formats, ontology terms, or
+#  technology. Regarding underlying technology, CDT relies heavily on W3C's RDF
+#  technology, an open Web standard that can be freely used by anyone.
+#
+
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix cdt: <http://vocab.bike.re.kr/cdt#> .
+
+# OWL 2 DL Compliance Statements ###############################################
+
+dcterms:creator a owl:ObjectProperty ;
+  rdfs:isDefinedBy <http://purl.org/dc/terms/> .
+dcterms:publisher a owl:ObjectProperty ;
+  rdfs:isDefinedBy <http://purl.org/dc/terms/> .
+dcterms:created a owl:DatatypeProperty ;
+  rdfs:isDefinedBy <http://purl.org/dc/terms/> .
+dcterms:modified a owl:DatatypeProperty ;
+  rdfs:isDefinedBy <http://purl.org/dc/terms/> .
+dcterms:identifier a owl:DatatypeProperty ;
+  rdfs:isDefinedBy <http://purl.org/dc/terms/> .
+dcterms:title a owl:DatatypeProperty ;
+  rdfs:isDefinedBy <http://purl.org/dc/terms/> .
+foaf:Agent a owl:Class ;
+  rdfs:isDefinedBy <http://xmlns.com/foaf/0.1/> .
+foaf:Person a owl:Class ;
+  rdfs:isDefinedBy <http://xmlns.com/foaf/0.1/> .
+foaf:name a owl:DatatypeProperty ;
+  rdfs:isDefinedBy <http://xmlns.com/foaf/0.1/> .
+foaf:homepage a owl:ObjectProperty ;
+  rdfs:isDefinedBy <http://xmlns.com/foaf/0.1/> .
+foaf:member a owl:ObjectProperty ;
+  rdfs:isDefinedBy <http://xmlns.com/foaf/0.1/> .
+
+# Ontology #####################################################################
+
+<http://vocab.bike.re.kr/cdt> a owl:Ontology ;
+  dc:title "CDT Ontology"@en ;
+  dc:description """
+    CDT (Clinical Document Template) Ontology is an ontology for
+    describing both structural and semantics-based clinical knowledge embedded
+    in the level of clinical document templates. You can always find the latest
+    version of the ontology at: https://github.com/SNUBiKE/CDT-Ontology
+    """@en ;
+  rdfs:seeAlso <https://github.com/SNUBiKE/CDT-Ontology> ;
+  dcterms:creator [
+      a foaf:Person ;
+      owl:sameAs _:sjnam ;
+      foaf:name "Sejin Nam"@en , "남세진"@ko ;
+    ] , [
+      a foaf:Person ;
+      owl:sameAs _:jgkim , <http://jayg.me/> ;
+      foaf:name "James G. Kim"@en , "김보람"@ko ;
+      foaf:homepage <http://jayg.org/> ;
+    ] ;
+  dcterms:publisher [
+      a foaf:Agent ;
+      owl:sameAs <http://bike.re.kr/me> ;
+      foaf:name "Biomedical Knowledge Engineering Laboratory"@en ;
+      foaf:homepage <http://bike.re.kr/> , <http://bike.snu.ac.kr/> ;
+      foaf:member _:sjnam , _:jgkim
+    ] ;
+  dcterms:created "2011-12-20+09:00"^^xsd:date ;
+  dcterms:modified "2012-07-21+09:00"^^xsd:date ;
+  owl:versionInfo "0.5" .
+
+# Classes #####################################################################
+
+cdt:ClinicalDocumentTemplate a owl:Class ;
+  rdfs:label "Clinical Document Template"@en ;
+  rdfs:comment """
+    A Clinical Document Template (CDT) is a container for the content of a
+    clinical document.
+    """@en ;
+  rdfs:isDefinedBy <http://vocab.bike.re.kr/cdt> ;
+  vs:term_status "testing"@en .
+
+cdt:TemplateComponent a owl:Class ;
+  rdfs:label "Template Component"@en ;
+  rdfs:comment """
+    A Template Component is something that can be in a clinical document
+    template.
+    """@en ;
+  rdfs:isDefinedBy <http://vocab.bike.re.kr/cdt> ;
+  vs:term_status "unstable"@en .
+
+cdt:TemplateDescriptionEntity a owl:Class ;
+  rdfs:subClassOf cdt:TemplateComponent ;
+  rdfs:label "Template Description Entity"@en ;
+  rdfs:comment """
+    A Template Description Entity (TDE) is a data entity holding a key/value
+    pair in a clinical document template.
+    """@en ;
+  rdfs:isDefinedBy <http://vocab.bike.re.kr/cdt> ;
+  vs:term_status "testing"@en .
+
+cdt:Relation a owl:Class ;
+  rdfs:label "Relation"@en ;
+  rdfs:comment """
+    Relation is a meta concept that subsumes the different types of binary or
+    n-ary relations that can be defined.
+    """@en ;
+  rdfs:isDefinedBy <http://vocab.bike.re.kr/cdt> ;
+  vs:term_status "unstable"@en .
+
+cdt:CDTRelation a owl:Class ;
+  rdfs:subClassOf cdt:Relation ;
+  rdfs:label "CDT Relation"@en ;
+  rdfs:comment """
+    A CDT Relation is a relation from template components to clinical document
+    templates.
+    """@en ;
+  rdfs:isDefinedBy <http://vocab.bike.re.kr/cdt> ;
+  vs:term_status "unstable"@en .
+
+cdt:TDERelation a owl:Class ;
+  rdfs:subClassOf cdt:Relation ;
+  rdfs:subClassOf cdt:TemplateComponent ;
+  rdfs:label "TDE Relation"@en ;
+  rdfs:comment """
+    A TDE Relation is a relation among template description entities.
+    """@en ;
+  rdfs:isDefinedBy <http://vocab.bike.re.kr/cdt> ;
+  vs:term_status "unstable"@en .
+
+cdt:UsedAtRelation a owl:Class ;
+  rdfs:subClassOf cdt:CDTRelation ;
+  rdfs:label "UsedAt Relation"@en ;
+  rdfs:comment """
+    A UsedAt Relation is a CDT relation that represents usage of template
+    components in clinical document templates.
+    """@en ;
+  rdfs:isDefinedBy <http://vocab.bike.re.kr/cdt> ;
+  vs:term_status "unstable"@en .
+
+cdt:ContainRelation a owl:Class ;
+  rdfs:subClassOf cdt:TDERelation ;
+  rdfs:label "Contain Relation"@en ;
+  rdfs:comment """
+    A Contain Relation is a TDE relation that represents inclusion of
+    template description entities.
+    """@en ;
+  rdfs:isDefinedBy <http://vocab.bike.re.kr/cdt> ;
+  vs:term_status "unstable"@en .
+
+cdt:AdjacentToRelation a owl:Class ;
+  rdfs:subClassOf cdt:TDERelation ;
+  rdfs:label "AdjacentTo Relation"@en ;
+  rdfs:comment """
+    A AdjacentTo Relation is a TDE relation that represents dispositional
+    nextness of template description entities.
+    """@en ;
+  rdfs:isDefinedBy <http://vocab.bike.re.kr/cdt> ;
+  vs:term_status "unstable"@en .
+
+cdt:Constraint a owl:Class ;
+  rdfs:label "Constraint"@en ;
+  rdfs:comment """
+    A Constraint is a concept that defines a range of values a template
+    description entity can posesses, or specifies generic constraints among
+    template description entities.
+    """@en ;
+  rdfs:isDefinedBy <http://vocab.bike.re.kr/cdt> ;
+  vs:term_status "unstable"@en .
+
+cdt:Context a owl:Class ;
+  rdfs:label "Context"@en ;
+  rdfs:comment """
+    A Context is a concept that represents circumstances in which a template
+    description entity appears.
+    """@en ;
+  rdfs:isDefinedBy <http://vocab.bike.re.kr/cdt> ;
+  vs:term_status "unstable"@en .
+
+# Properties ##################################################################
+
+cdt:source a owl:ObjectProperty ;
+  rdfs:domain cdt:Relation ;
+  rdfs:label "source"@en ;
+  rdfs:comment """
+    source identifies an instance that is the source or origin of the directed
+    binary or n-ary relation.
+    """@en ;
+  rdfs:isDefinedBy <http://vocab.bike.re.kr/cdt> ;
+  vs:term_status "unstable"@en .
+
+cdt:target a owl:ObjectProperty ;
+  rdfs:domain cdt:Relation ;
+  rdfs:label "target"@en ;
+  rdfs:comment """
+    target identifies an instance that is the target of the directed binary or
+    n-ary relation.
+    """@en ;
+  rdfs:isDefinedBy <http://vocab.bike.re.kr/cdt> ;
+  vs:term_status "unstable"@en .
+
+cdt:CDT_relation_source a owl:ObjectProperty ;
+  rdfs:subPropertyOf cdt:source ;
+  rdfs:range cdt:TemplateComponent ;
+  rdfs:label "CDT relation source"@en ;
+  rdfs:comment """
+    CDT relation source identifies a template component that is the source
+    or origin of the directed binary or n-ary relation.
+    """@en ;
+  rdfs:isDefinedBy <http://vocab.bike.re.kr/cdt> ;
+  vs:term_status "archaic"@en .
+
+cdt:CDT_relation_target a owl:ObjectProperty ;
+  rdfs:subPropertyOf cdt:target ;
+  rdfs:range cdt:ClinicalDocumentTemplate ;
+  rdfs:label "CDT relation target"@en ;
+  rdfs:comment """
+    CDT relation target identifies a clinical document template that is the
+    target of the directed binary or n-ary relation.
+    """@en ;
+  rdfs:isDefinedBy <http://vocab.bike.re.kr/cdt> ;
+  vs:term_status "archaic"@en .
+
+cdt:TDE_relation_source a owl:ObjectProperty ;
+  rdfs:subPropertyOf cdt:source ;
+  rdfs:range cdt:TemplateDescriptionEntity ;
+  rdfs:label "TDE relation source"@en ;
+  rdfs:comment """
+    TDE relation source identifies a template description entity that is the
+    source or origin of the directed binary or n-ary relation.
+    """@en ;
+  rdfs:isDefinedBy <http://vocab.bike.re.kr/cdt> ;
+  vs:term_status "archaic"@en .
+
+cdt:TDE_relation_target a owl:ObjectProperty ;
+  rdfs:subPropertyOf cdt:target ;
+  rdfs:range cdt:TemplateDescriptionEntity ;
+  rdfs:label "TDE relation target"@en ;
+  rdfs:comment """
+    TDE relation target identifies a template description entity that is the
+    target of the directed binary or n-ary relation.
+    """@en ;
+  rdfs:isDefinedBy <http://vocab.bike.re.kr/cdt> ;
+  vs:term_status "archaic"@en .
+
+cdt:constraint a owl:ObjectProperty ;
+  rdfs:domain cdt:TemplateDescriptionEntity ;
+  rdfs:range cdt:Constraint ;
+  rdfs:label "constraint"@en ;
+  rdfs:comment """
+    constraint links to a constraint the template description entity has.
+    """@en ;
+  rdfs:isDefinedBy <http://vocab.bike.re.kr/cdt> ;
+  vs:term_status "unstable"@en .
+
+cdt:context a owl:ObjectProperty ;
+  rdfs:domain cdt:TemplateDescriptionEntity ;
+  rdfs:range cdt:Context ;
+  rdfs:label "context"@en ;
+  rdfs:comment """
+    context refers to a context in which the template description entity appears.
+    """@en ;
+  rdfs:isDefinedBy <http://vocab.bike.re.kr/cdt> ;
+  vs:term_status "unstable"@en .
+
+cdt:department a owl:DatatypeProperty ;
+  rdfs:domain cdt:ClinicalDocumentTemplate ;
+  rdfs:range xsd:string ;
+  rdfs:label "department"@en ;
+  rdfs:comment """
+    department describes a department where the clinical document template is
+    defined and used.
+    """@en ;
+  rdfs:isDefinedBy <http://vocab.bike.re.kr/cdt> ;
+  vs:term_status "archaic"@en .
+
+cdt:author a owl:DatatypeProperty ;
+  rdfs:subPropertyOf dc:creator ;
+  rdfs:domain [
+      a owl:Class ;
+      owl:unionOf (
+        cdt:ClinicalDocumentTemplate
+        cdt:TemplateDescriptionEntity
+        cdt:Relation
+      )
+    ] ;
+  rdfs:range xsd:string ;
+  rdfs:label "author"@en ;
+  rdfs:comment """
+    author describes an agent responsible for making the resource.
+    """@en ;
+  rdfs:isDefinedBy <http://vocab.bike.re.kr/cdt> ;
+  vs:term_status "archaic"@en .
+
+cdt:context_name a owl:DatatypeProperty ;
+  rdfs:subPropertyOf dcterms:title ;
+  rdfs:domain cdt:Context ;
+  rdfs:range xsd:string ;
+  rdfs:label "context name"@en ;
+  rdfs:comment """
+    context name describes a name given to the context.
+    """@en ;
+  rdfs:isDefinedBy <http://vocab.bike.re.kr/cdt> ;
+  vs:term_status "archaic"@en .
+
+cdt:filename a owl:DatatypeProperty ;
+  rdfs:domain cdt:ClinicalDocumentTemplate ;
+  rdfs:range xsd:string ;
+  rdfs:label "filename"@en ;
+  rdfs:comment """
+    filename describes a name of the file in which the clinical document
+    template is stored.
+    """@en ;
+  rdfs:isDefinedBy <http://vocab.bike.re.kr/cdt> ;
+  vs:term_status "archaic"@en .
+
+cdt:id a owl:DatatypeProperty ;
+  rdfs:subPropertyOf dcterms:identifier ;
+  rdfs:domain [
+      a owl:Class ;
+      owl:unionOf (
+        cdt:ClinicalDocumentTemplate
+        cdt:TemplateComponent
+      )
+    ] ;
+  rdfs:range xsd:string ;
+  rdfs:label "id"@en ;
+  rdfs:comment """
+    id describes an unambiguous reference to the resource.
+    """@en ;
+  rdfs:isDefinedBy <http://vocab.bike.re.kr/cdt> ;
+  vs:term_status "archaic"@en .
+
+cdt:name a owl:DatatypeProperty ;
+  rdfs:subPropertyOf dcterms:title ;
+  rdfs:domain [
+      a owl:Class ;
+      owl:unionOf (
+        cdt:ClinicalDocumentTemplate
+        cdt:TemplateComponent
+      )
+    ] ;
+  rdfs:range xsd:string ;
+  rdfs:label "name"@en ;
+  rdfs:comment """
+    name describes a name given to the resource.
+    """@en ;
+  rdfs:isDefinedBy <http://vocab.bike.re.kr/cdt> ;
+  vs:term_status "archaic"@en .
+
+cdt:created_date a owl:DatatypeProperty ;
+  rdfs:subPropertyOf dcterms:created ;
+  rdfs:domain [
+      a owl:Class ;
+      owl:unionOf (
+        cdt:ClinicalDocumentTemplate
+        cdt:TemplateDescriptionEntity
+        cdt:Relation
+      )
+    ] ;
+  rdfs:range xsd:dateTime ;
+  rdfs:label "created date"@en ;
+  rdfs:comment """
+    created date describes the date of creation of the resource.
+    """@en ;
+  rdfs:isDefinedBy <http://vocab.bike.re.kr/cdt> ;
+  vs:term_status "archaic"@en .
+
+cdt:updated_date a owl:DatatypeProperty ;
+  rdfs:subPropertyOf dcterms:modified ;
+  rdfs:domain [
+      a owl:Class ;
+      owl:unionOf (
+        cdt:ClinicalDocumentTemplate
+        cdt:TemplateDescriptionEntity
+        cdt:Relation
+      )
+    ] ;
+  rdfs:range xsd:dateTime ;
+  rdfs:label "updated date"@en ;
+  rdfs:comment """
+    updated date describes the date on which the resource was changed.
+    """@en ;
+  rdfs:isDefinedBy <http://vocab.bike.re.kr/cdt> ;
+  vs:term_status "archaic"@en .
+
+cdt:reference a owl:DatatypeProperty ;
+  rdfs:seeAlso dcterms:references ;
+  rdfs:domain cdt:TemplateDescriptionEntity ;
+  rdfs:range xsd:string ;
+  rdfs:label "reference"@en ;
+  rdfs:comment """
+    reference refers a related resource that is referenced, cited, or otherwise
+    pointed to by the described resource.
+    """@en ;
+  rdfs:isDefinedBy <http://vocab.bike.re.kr/cdt> ;
+  vs:term_status "archaic"@en .
+
+# Restrictions ################################################################
+
+cdt:CDTRelation rdfs:subClassOf [
+    a owl:Restriction ;
+    owl:onProperty cdt:source ;
+    owl:allValuesFrom cdt:TemplateComponent
+  ] , [
+    a owl:Restriction ;
+    owl:onProperty cdt:target ;
+    owl:allValuesFrom cdt:ClinicalDocumentTemplate
+  ] .
+
+cdt:TDERelation rdfs:subClassOf [
+    a owl:Restriction ;
+    owl:onProperty cdt:source ;
+    owl:allValuesFrom cdt:TemplateDescriptionEntity
+  ] , [
+    a owl:Restriction ;
+    owl:onProperty cdt:target ;
+    owl:allValuesFrom cdt:TemplateDescriptionEntity
+  ] .
