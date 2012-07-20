@@ -100,30 +100,6 @@
         <vs:term_status xml:lang="en">unstable</vs:term_status>
     </owl:Class>
 
-    <owl:ObjectProperty rdf:about="http://vocab.bike.re.kr/cdt#CDT_relation_source">
-        <comment xml:lang="en">
-    CDT relation source identifies a template component that is the source
-    or origin of the directed binary or n-ary relation.
-    </comment>
-        <isDefinedBy rdf:resource="http://vocab.bike.re.kr/cdt"/>
-        <label xml:lang="en">CDT relation source</label>
-        <range rdf:resource="http://vocab.bike.re.kr/cdt#TemplateComponent"/>
-        <subPropertyOf rdf:resource="http://vocab.bike.re.kr/cdt#source"/>
-        <vs:term_status xml:lang="en">archaic</vs:term_status>
-    </owl:ObjectProperty>
-
-    <owl:ObjectProperty rdf:about="http://vocab.bike.re.kr/cdt#CDT_relation_target">
-        <comment xml:lang="en">
-    CDT relation target identifies a clinical document template that is the
-    target of the directed binary or n-ary relation.
-    </comment>
-        <isDefinedBy rdf:resource="http://vocab.bike.re.kr/cdt"/>
-        <label xml:lang="en">CDT relation target</label>
-        <range rdf:resource="http://vocab.bike.re.kr/cdt#ClinicalDocumentTemplate"/>
-        <subPropertyOf rdf:resource="http://vocab.bike.re.kr/cdt#target"/>
-        <vs:term_status xml:lang="en">archaic</vs:term_status>
-    </owl:ObjectProperty>
-
     <owl:Class rdf:about="http://vocab.bike.re.kr/cdt#ClinicalDocumentTemplate">
         <comment xml:lang="en">
     A Clinical Document Template (CDT) is a container for the content of a
@@ -197,30 +173,6 @@
         <vs:term_status xml:lang="en">unstable</vs:term_status>
     </owl:Class>
 
-    <owl:ObjectProperty rdf:about="http://vocab.bike.re.kr/cdt#TDE_relation_source">
-        <comment xml:lang="en">
-    TDE relation source identifies a template description entity that is the
-    source or origin of the directed binary or n-ary relation.
-    </comment>
-        <isDefinedBy rdf:resource="http://vocab.bike.re.kr/cdt"/>
-        <label xml:lang="en">TDE relation source</label>
-        <range rdf:resource="http://vocab.bike.re.kr/cdt#TemplateDescriptionEntity"/>
-        <subPropertyOf rdf:resource="http://vocab.bike.re.kr/cdt#source"/>
-        <vs:term_status xml:lang="en">archaic</vs:term_status>
-    </owl:ObjectProperty>
-
-    <owl:ObjectProperty rdf:about="http://vocab.bike.re.kr/cdt#TDE_relation_target">
-        <comment xml:lang="en">
-    TDE relation target identifies a template description entity that is the
-    target of the directed binary or n-ary relation.
-    </comment>
-        <isDefinedBy rdf:resource="http://vocab.bike.re.kr/cdt"/>
-        <label xml:lang="en">TDE relation target</label>
-        <range rdf:resource="http://vocab.bike.re.kr/cdt#TemplateDescriptionEntity"/>
-        <subPropertyOf rdf:resource="http://vocab.bike.re.kr/cdt#target"/>
-        <vs:term_status xml:lang="en">archaic</vs:term_status>
-    </owl:ObjectProperty>
-
     <owl:Class rdf:about="http://vocab.bike.re.kr/cdt#TemplateComponent">
         <comment xml:lang="en">
     A Template Component is something that can be in a clinical document
@@ -253,30 +205,6 @@
         <vs:term_status xml:lang="en">unstable</vs:term_status>
     </owl:Class>
 
-    <owl:DatatypeProperty rdf:about="http://vocab.bike.re.kr/cdt#author">
-        <comment xml:lang="en">
-    author describes an agent responsible for making the resource.
-    </comment>
-        <domain rdf:parseType="Resource">
-            <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-            <owl:unionOf rdf:parseType="Resource">
-                <rdf:first rdf:resource="http://vocab.bike.re.kr/cdt#ClinicalDocumentTemplate"/>
-                <rdf:rest rdf:parseType="Resource">
-                    <rdf:first rdf:resource="http://vocab.bike.re.kr/cdt#TemplateDescriptionEntity"/>
-                    <rdf:rest rdf:parseType="Resource">
-                        <rdf:first rdf:resource="http://vocab.bike.re.kr/cdt#Relation"/>
-                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-                    </rdf:rest>
-                </rdf:rest>
-            </owl:unionOf>
-        </domain>
-        <isDefinedBy rdf:resource="http://vocab.bike.re.kr/cdt"/>
-        <label xml:lang="en">author</label>
-        <range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-        <subPropertyOf rdf:resource="http://purl.org/dc/elements/1.1/creator"/>
-        <vs:term_status xml:lang="en">archaic</vs:term_status>
-    </owl:DatatypeProperty>
-
     <owl:ObjectProperty rdf:about="http://vocab.bike.re.kr/cdt#constraint">
         <comment xml:lang="en">
     constraint links to a constraint the template description entity has.
@@ -299,54 +227,6 @@
         <vs:term_status xml:lang="en">unstable</vs:term_status>
     </owl:ObjectProperty>
 
-    <owl:DatatypeProperty rdf:about="http://vocab.bike.re.kr/cdt#context_name">
-        <comment xml:lang="en">
-    context name describes a name given to the context.
-    </comment>
-        <domain rdf:resource="http://vocab.bike.re.kr/cdt#Context"/>
-        <isDefinedBy rdf:resource="http://vocab.bike.re.kr/cdt"/>
-        <label xml:lang="en">context name</label>
-        <range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-        <subPropertyOf rdf:resource="http://purl.org/dc/terms/title"/>
-        <vs:term_status xml:lang="en">archaic</vs:term_status>
-    </owl:DatatypeProperty>
-
-    <owl:DatatypeProperty rdf:about="http://vocab.bike.re.kr/cdt#created_date">
-        <comment xml:lang="en">
-    created date describes the date of creation of the resource.
-    </comment>
-        <domain rdf:parseType="Resource">
-            <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-            <owl:unionOf rdf:parseType="Resource">
-                <rdf:first rdf:resource="http://vocab.bike.re.kr/cdt#ClinicalDocumentTemplate"/>
-                <rdf:rest rdf:parseType="Resource">
-                    <rdf:first rdf:resource="http://vocab.bike.re.kr/cdt#TemplateDescriptionEntity"/>
-                    <rdf:rest rdf:parseType="Resource">
-                        <rdf:first rdf:resource="http://vocab.bike.re.kr/cdt#Relation"/>
-                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-                    </rdf:rest>
-                </rdf:rest>
-            </owl:unionOf>
-        </domain>
-        <isDefinedBy rdf:resource="http://vocab.bike.re.kr/cdt"/>
-        <label xml:lang="en">created date</label>
-        <range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
-        <subPropertyOf rdf:resource="http://purl.org/dc/terms/created"/>
-        <vs:term_status xml:lang="en">archaic</vs:term_status>
-    </owl:DatatypeProperty>
-
-    <owl:DatatypeProperty rdf:about="http://vocab.bike.re.kr/cdt#department">
-        <comment xml:lang="en">
-    department describes a department where the clinical document template is
-    defined and used.
-    </comment>
-        <domain rdf:resource="http://vocab.bike.re.kr/cdt#ClinicalDocumentTemplate"/>
-        <isDefinedBy rdf:resource="http://vocab.bike.re.kr/cdt"/>
-        <label xml:lang="en">department</label>
-        <range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-        <vs:term_status xml:lang="en">archaic</vs:term_status>
-    </owl:DatatypeProperty>
-
     <owl:DatatypeProperty rdf:about="http://vocab.bike.re.kr/cdt#filename">
         <comment xml:lang="en">
     filename describes a name of the file in which the clinical document
@@ -356,61 +236,6 @@
         <isDefinedBy rdf:resource="http://vocab.bike.re.kr/cdt"/>
         <label xml:lang="en">filename</label>
         <range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-        <vs:term_status xml:lang="en">archaic</vs:term_status>
-    </owl:DatatypeProperty>
-
-    <owl:DatatypeProperty rdf:about="http://vocab.bike.re.kr/cdt#id">
-        <comment xml:lang="en">
-    id describes an unambiguous reference to the resource.
-    </comment>
-        <domain rdf:parseType="Resource">
-            <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-            <owl:unionOf rdf:parseType="Resource">
-                <rdf:first rdf:resource="http://vocab.bike.re.kr/cdt#ClinicalDocumentTemplate"/>
-                <rdf:rest rdf:parseType="Resource">
-                    <rdf:first rdf:resource="http://vocab.bike.re.kr/cdt#TemplateComponent"/>
-                    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-                </rdf:rest>
-            </owl:unionOf>
-        </domain>
-        <isDefinedBy rdf:resource="http://vocab.bike.re.kr/cdt"/>
-        <label xml:lang="en">id</label>
-        <range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-        <subPropertyOf rdf:resource="http://purl.org/dc/terms/identifier"/>
-        <vs:term_status xml:lang="en">archaic</vs:term_status>
-    </owl:DatatypeProperty>
-
-    <owl:DatatypeProperty rdf:about="http://vocab.bike.re.kr/cdt#name">
-        <comment xml:lang="en">
-    name describes a name given to the resource.
-    </comment>
-        <domain rdf:parseType="Resource">
-            <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-            <owl:unionOf rdf:parseType="Resource">
-                <rdf:first rdf:resource="http://vocab.bike.re.kr/cdt#ClinicalDocumentTemplate"/>
-                <rdf:rest rdf:parseType="Resource">
-                    <rdf:first rdf:resource="http://vocab.bike.re.kr/cdt#TemplateComponent"/>
-                    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-                </rdf:rest>
-            </owl:unionOf>
-        </domain>
-        <isDefinedBy rdf:resource="http://vocab.bike.re.kr/cdt"/>
-        <label xml:lang="en">name</label>
-        <range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-        <subPropertyOf rdf:resource="http://purl.org/dc/terms/title"/>
-        <vs:term_status xml:lang="en">archaic</vs:term_status>
-    </owl:DatatypeProperty>
-
-    <owl:DatatypeProperty rdf:about="http://vocab.bike.re.kr/cdt#reference">
-        <comment xml:lang="en">
-    reference refers a related resource that is referenced, cited, or otherwise
-    pointed to by the described resource.
-    </comment>
-        <domain rdf:resource="http://vocab.bike.re.kr/cdt#TemplateDescriptionEntity"/>
-        <isDefinedBy rdf:resource="http://vocab.bike.re.kr/cdt"/>
-        <label xml:lang="en">reference</label>
-        <range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-        <seeAlso rdf:resource="http://purl.org/dc/terms/references"/>
         <vs:term_status xml:lang="en">archaic</vs:term_status>
     </owl:DatatypeProperty>
 
@@ -435,30 +260,6 @@
         <label xml:lang="en">target</label>
         <vs:term_status xml:lang="en">unstable</vs:term_status>
     </owl:ObjectProperty>
-
-    <owl:DatatypeProperty rdf:about="http://vocab.bike.re.kr/cdt#updated_date">
-        <comment xml:lang="en">
-    updated date describes the date on which the resource was changed.
-    </comment>
-        <domain rdf:parseType="Resource">
-            <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-            <owl:unionOf rdf:parseType="Resource">
-                <rdf:first rdf:resource="http://vocab.bike.re.kr/cdt#ClinicalDocumentTemplate"/>
-                <rdf:rest rdf:parseType="Resource">
-                    <rdf:first rdf:resource="http://vocab.bike.re.kr/cdt#TemplateDescriptionEntity"/>
-                    <rdf:rest rdf:parseType="Resource">
-                        <rdf:first rdf:resource="http://vocab.bike.re.kr/cdt#Relation"/>
-                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-                    </rdf:rest>
-                </rdf:rest>
-            </owl:unionOf>
-        </domain>
-        <isDefinedBy rdf:resource="http://vocab.bike.re.kr/cdt"/>
-        <label xml:lang="en">updated date</label>
-        <range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
-        <subPropertyOf rdf:resource="http://purl.org/dc/terms/modified"/>
-        <vs:term_status xml:lang="en">archaic</vs:term_status>
-    </owl:DatatypeProperty>
 
     <owl:Class rdf:about="http://xmlns.com/foaf/0.1/Agent">
         <isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/"/>
