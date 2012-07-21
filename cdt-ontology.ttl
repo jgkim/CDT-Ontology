@@ -15,29 +15,28 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix adms: <http://www.w3.org/ns/adms#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
 @prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
-@prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix cdt: <http://vocab.bike.re.kr/cdt#> .
 
 # OWL 2 DL Compliance Statements ###############################################
 
-dcterms:creator a owl:ObjectProperty ;
+adms:SemanticAsset a owl:Class ;
+  rdfs:isDefinedBy <http://www.w3.org/ns/adms> .
+adms:status a owl:ObjectProperty ;
+  rdfs:isDefinedBy <http://www.w3.org/ns/adms> .
+dcterms:description a owl:DatatypeProperty ;
   rdfs:isDefinedBy <http://purl.org/dc/terms/> .
 dcterms:publisher a owl:ObjectProperty ;
   rdfs:isDefinedBy <http://purl.org/dc/terms/> .
-dcterms:created a owl:DatatypeProperty ;
+dcterms:license a owl:ObjectProperty ;
   rdfs:isDefinedBy <http://purl.org/dc/terms/> .
-dcterms:modified a owl:DatatypeProperty ;
-  rdfs:isDefinedBy <http://purl.org/dc/terms/> .
-dcterms:identifier a owl:DatatypeProperty ;
-  rdfs:isDefinedBy <http://purl.org/dc/terms/> .
-dcterms:title a owl:DatatypeProperty ;
-  rdfs:isDefinedBy <http://purl.org/dc/terms/> .
-foaf:Agent a owl:Class ;
-  rdfs:isDefinedBy <http://xmlns.com/foaf/0.1/> .
 foaf:Person a owl:Class ;
+  rdfs:isDefinedBy <http://xmlns.com/foaf/0.1/> .
+foaf:Organization a owl:Class ;
   rdfs:isDefinedBy <http://xmlns.com/foaf/0.1/> .
 foaf:name a owl:DatatypeProperty ;
   rdfs:isDefinedBy <http://xmlns.com/foaf/0.1/> .
@@ -48,9 +47,9 @@ foaf:member a owl:ObjectProperty ;
 
 # Ontology #####################################################################
 
-<http://vocab.bike.re.kr/cdt> a owl:Ontology ;
-  dc:title "CDT Ontology"@en ;
-  dc:description """
+<http://vocab.bike.re.kr/cdt> a owl:Ontology , adms:SemanticAsset ;
+  dcterms:title "CDT Ontology"@en ;
+  dcterms:description """
     CDT (Clinical Document Template) Ontology is an ontology for
     describing both structural and semantics-based clinical knowledge embedded
     in the level of clinical document templates. You can always find the latest
@@ -68,14 +67,20 @@ foaf:member a owl:ObjectProperty ;
       foaf:homepage <http://jayg.org/> ;
     ] ;
   dcterms:publisher [
-      a foaf:Agent ;
+      a foaf:Organization ;
       owl:sameAs <http://bike.re.kr/me> ;
-      foaf:name "Biomedical Knowledge Engineering Laboratory"@en ;
+      foaf:name "BiKE, SNU"@en ;
+      dcterms:title "Biomedical Knowledge Engineering Laboratory, Seoul National University"@en ;
       foaf:homepage <http://bike.re.kr/> , <http://bike.snu.ac.kr/> ;
       foaf:member _:sjnam , _:jgkim
     ] ;
+  vann:preferredNamespaceUri "http://vocab.bike.re.kr/cdt#" ;
+  vann:preferredNamespacePrefix "cdt" ;
+  dcterms:type <http://purl.org/adms/assettype/Ontology> ;
+  adms:status <http://purl.org/adms/status/UnderDevelopment> ;
+  dcterms:license <http://creativecommons.org/licenses/by/3.0/> ;
   dcterms:created "2011-12-20+09:00"^^xsd:date ;
-  dcterms:modified "2012-07-21+09:00"^^xsd:date ;
+  dcterms:modified "2012-07-22+09:00"^^xsd:date ;
   owl:versionInfo "0.5" .
 
 # Classes #####################################################################
@@ -192,8 +197,8 @@ cdt:source a owl:ObjectProperty ;
   rdfs:domain cdt:Relation ;
   rdfs:label "source"@en ;
   rdfs:comment """
-    source identifies an instance that is the source or origin of the directed
-    binary or n-ary relation.
+    Links to an instance that is a source or origin of the directed binary
+    or n-ary relation.
     """@en ;
   rdfs:isDefinedBy <http://vocab.bike.re.kr/cdt> ;
   vs:term_status "unstable"@en .
@@ -202,8 +207,8 @@ cdt:target a owl:ObjectProperty ;
   rdfs:domain cdt:Relation ;
   rdfs:label "target"@en ;
   rdfs:comment """
-    target identifies an instance that is the target of the directed binary or
-    n-ary relation.
+    Links to an instance that is a target of the directed binary or n-ary
+    relation.
     """@en ;
   rdfs:isDefinedBy <http://vocab.bike.re.kr/cdt> ;
   vs:term_status "unstable"@en .
@@ -213,7 +218,7 @@ cdt:constraint a owl:ObjectProperty ;
   rdfs:range cdt:Constraint ;
   rdfs:label "constraint"@en ;
   rdfs:comment """
-    constraint links to a constraint the template description entity has.
+    Links to a constraint the template description entity has.
     """@en ;
   rdfs:isDefinedBy <http://vocab.bike.re.kr/cdt> ;
   vs:term_status "unstable"@en .
@@ -223,21 +228,75 @@ cdt:context a owl:ObjectProperty ;
   rdfs:range cdt:Context ;
   rdfs:label "context"@en ;
   rdfs:comment """
-    context refers to a context in which the template description entity appears.
+    Links to a context in which the template description entity appears.
     """@en ;
   rdfs:isDefinedBy <http://vocab.bike.re.kr/cdt> ;
   vs:term_status "unstable"@en .
 
-cdt:filename a owl:DatatypeProperty ;
+cdt:department a owl:DatatypeProperty ;
   rdfs:domain cdt:ClinicalDocumentTemplate ;
-  rdfs:range xsd:string ;
-  rdfs:label "filename"@en ;
+  rdfs:range rdfs:Literal ;
+  rdfs:label "department"@en ;
   rdfs:comment """
-    filename describes a name of the file in which the clinical document
-    template is stored.
+    The department where the clinical document template is defined and used.
     """@en ;
   rdfs:isDefinedBy <http://vocab.bike.re.kr/cdt> ;
   vs:term_status "archaic"@en .
+
+cdt:filename a owl:DatatypeProperty ;
+  rdfs:domain cdt:ClinicalDocumentTemplate ;
+  rdfs:range rdfs:Literal ;
+  rdfs:label "filename"@en ;
+  rdfs:comment """
+    The name of the file in which the clinical document template is stored.
+    """@en ;
+  rdfs:isDefinedBy <http://vocab.bike.re.kr/cdt> ;
+  vs:term_status "archaic"@en .
+
+dcterms:references a owl:ObjectProperty ;
+  rdfs:label "references"@en ;
+  rdfs:comment """
+    The dcterms:references property fully represents the CDT Ontology
+    relationship of the same name. The CDT Ontology uses this to link to a
+    related resource that is referenced, cited, or otherwise pointed to by the
+    described template description entity.
+    """@en ;
+  rdfs:isDefinedBy <http://purl.org/dc/terms/> .
+
+dcterms:title a owl:DatatypeProperty ;
+  rdfs:label "title"@en ;
+  rdfs:comment """
+    The dcterms:title property fully represents the CDT Ontology property of
+    name that is used to describe a name given to the instance in the ontology.
+    """@en ;
+  rdfs:isDefinedBy <http://purl.org/dc/terms/> .
+
+dcterms:creator a owl:ObjectProperty ;
+  rdfs:label "creator"@en ;
+  rdfs:comment """
+    The dcterms:creator property fully represents the CDT Ontology property of
+    the same name. The CDT Ontology uses this to link to an agent responsible
+    for making the instance in the ontology.
+    """@en ;
+  rdfs:isDefinedBy <http://purl.org/dc/terms/> .
+
+dcterms:created a owl:DatatypeProperty ;
+  rdfs:label "created"@en ;
+  rdfs:comment """
+    The dcterms:created property fully represents the CDT Ontology property of
+    the same name. The CDT Ontology uses this to describe the date of creation
+    of the instance in the ontology.
+    """@en ;
+  rdfs:isDefinedBy <http://purl.org/dc/terms/> .
+
+dcterms:modified a owl:DatatypeProperty ;
+  rdfs:label "modified"@en ;
+  rdfs:comment """
+    The dcterms:modified property fully represents the CDT Ontology property of
+    the same name. The CDT Ontology uses this to describe the date on which the
+    instance in the ontology was changed.
+    """@en ;
+  rdfs:isDefinedBy <http://purl.org/dc/terms/> .
 
 # Restrictions ################################################################
 

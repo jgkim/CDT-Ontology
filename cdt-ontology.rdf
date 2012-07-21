@@ -1,44 +1,77 @@
 <rdf:RDF xmlns="http://www.w3.org/2000/01/rdf-schema#"
-    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:adms="http://www.w3.org/ns/adms#"
     xmlns:dcterms="http://purl.org/dc/terms/"
     xmlns:foaf="http://xmlns.com/foaf/0.1/"
     xmlns:owl="http://www.w3.org/2002/07/owl#"
     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:vann="http://purl.org/vocab/vann/"
     xmlns:vs="http://www.w3.org/2003/06/sw-vocab-status/ns#">
 
     <owl:DatatypeProperty rdf:about="http://purl.org/dc/terms/created">
+        <comment xml:lang="en">
+    The dcterms:created property fully represents the CDT Ontology property of
+    the same name. The CDT Ontology uses this to describe the date of creation
+    of the instance in the ontology.
+    </comment>
         <isDefinedBy rdf:resource="http://purl.org/dc/terms/"/>
+        <label xml:lang="en">created</label>
     </owl:DatatypeProperty>
 
     <owl:ObjectProperty rdf:about="http://purl.org/dc/terms/creator">
+        <comment xml:lang="en">
+    The dcterms:creator property fully represents the CDT Ontology property of
+    the same name. The CDT Ontology uses this to link to an agent responsible
+    for making the instance in the ontology.
+    </comment>
         <isDefinedBy rdf:resource="http://purl.org/dc/terms/"/>
+        <label xml:lang="en">creator</label>
     </owl:ObjectProperty>
 
-    <owl:DatatypeProperty rdf:about="http://purl.org/dc/terms/identifier">
+    <owl:DatatypeProperty rdf:about="http://purl.org/dc/terms/description">
         <isDefinedBy rdf:resource="http://purl.org/dc/terms/"/>
     </owl:DatatypeProperty>
 
-    <owl:DatatypeProperty rdf:about="http://purl.org/dc/terms/modified">
+    <owl:ObjectProperty rdf:about="http://purl.org/dc/terms/license">
         <isDefinedBy rdf:resource="http://purl.org/dc/terms/"/>
+    </owl:ObjectProperty>
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/dc/terms/modified">
+        <comment xml:lang="en">
+    The dcterms:modified property fully represents the CDT Ontology property of
+    the same name. The CDT Ontology uses this to describe the date on which the
+    instance in the ontology was changed.
+    </comment>
+        <isDefinedBy rdf:resource="http://purl.org/dc/terms/"/>
+        <label xml:lang="en">modified</label>
     </owl:DatatypeProperty>
 
     <owl:ObjectProperty rdf:about="http://purl.org/dc/terms/publisher">
         <isDefinedBy rdf:resource="http://purl.org/dc/terms/"/>
     </owl:ObjectProperty>
 
-    <owl:DatatypeProperty rdf:about="http://purl.org/dc/terms/title">
+    <owl:ObjectProperty rdf:about="http://purl.org/dc/terms/references">
+        <comment xml:lang="en">
+    The dcterms:references property fully represents the CDT Ontology
+    relationship of the same name. The CDT Ontology uses this to link to a
+    related resource that is referenced, cited, or otherwise pointed to by the
+    described template description entity.
+    </comment>
         <isDefinedBy rdf:resource="http://purl.org/dc/terms/"/>
+        <label xml:lang="en">references</label>
+    </owl:ObjectProperty>
+
+    <owl:DatatypeProperty rdf:about="http://purl.org/dc/terms/title">
+        <comment xml:lang="en">
+    The dcterms:title property fully represents the CDT Ontology property of
+    name that is used to describe a name given to the instance in the ontology.
+    </comment>
+        <isDefinedBy rdf:resource="http://purl.org/dc/terms/"/>
+        <label xml:lang="en">title</label>
     </owl:DatatypeProperty>
 
     <owl:Ontology rdf:about="http://vocab.bike.re.kr/cdt">
-        <dc:description xml:lang="en">
-    CDT (Clinical Document Template) Ontology is an ontology for
-    describing both structural and semantics-based clinical knowledge embedded
-    in the level of clinical document templates. You can always find the latest
-    version of the ontology at: https://github.com/SNUBiKE/CDT-Ontology
-    </dc:description>
-        <dc:title xml:lang="en">CDT Ontology</dc:title>
+        <rdf:type rdf:resource="http://www.w3.org/ns/adms#SemanticAsset"/>
         <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2011-12-20+09:00</dcterms:created>
         <dcterms:creator rdf:parseType="Resource">
             <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
@@ -54,18 +87,31 @@
             <foaf:name xml:lang="en">James G. Kim</foaf:name>
             <foaf:name xml:lang="ko">김보람</foaf:name>
         </dcterms:creator>
-        <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2012-07-21+09:00</dcterms:modified>
+        <dcterms:description xml:lang="en">
+    CDT (Clinical Document Template) Ontology is an ontology for
+    describing both structural and semantics-based clinical knowledge embedded
+    in the level of clinical document templates. You can always find the latest
+    version of the ontology at: https://github.com/SNUBiKE/CDT-Ontology
+    </dcterms:description>
+        <dcterms:license rdf:resource="http://creativecommons.org/licenses/by/3.0/"/>
+        <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2012-07-22+09:00</dcterms:modified>
         <dcterms:publisher rdf:parseType="Resource">
-            <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Agent"/>
+            <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Organization"/>
+            <dcterms:title xml:lang="en">Biomedical Knowledge Engineering Laboratory, Seoul National University</dcterms:title>
             <owl:sameAs rdf:resource="http://bike.re.kr/me"/>
             <foaf:homepage rdf:resource="http://bike.re.kr/"/>
             <foaf:homepage rdf:resource="http://bike.snu.ac.kr/"/>
             <foaf:member rdf:nodeID="b1"/>
             <foaf:member rdf:nodeID="b2"/>
-            <foaf:name xml:lang="en">Biomedical Knowledge Engineering Laboratory</foaf:name>
+            <foaf:name xml:lang="en">BiKE, SNU</foaf:name>
         </dcterms:publisher>
+        <dcterms:title xml:lang="en">CDT Ontology</dcterms:title>
+        <dcterms:type rdf:resource="http://purl.org/adms/assettype/Ontology"/>
+        <vann:preferredNamespacePrefix>cdt</vann:preferredNamespacePrefix>
+        <vann:preferredNamespaceUri>http://vocab.bike.re.kr/cdt#</vann:preferredNamespaceUri>
         <seeAlso rdf:resource="https://github.com/SNUBiKE/CDT-Ontology"/>
         <owl:versionInfo>0.5</owl:versionInfo>
+        <adms:status rdf:resource="http://purl.org/adms/status/UnderDevelopment"/>
     </owl:Ontology>
 
     <owl:Class rdf:about="http://vocab.bike.re.kr/cdt#AdjacentToRelation">
@@ -207,7 +253,7 @@
 
     <owl:ObjectProperty rdf:about="http://vocab.bike.re.kr/cdt#constraint">
         <comment xml:lang="en">
-    constraint links to a constraint the template description entity has.
+    Links to a constraint the template description entity has.
     </comment>
         <domain rdf:resource="http://vocab.bike.re.kr/cdt#TemplateDescriptionEntity"/>
         <isDefinedBy rdf:resource="http://vocab.bike.re.kr/cdt"/>
@@ -218,7 +264,7 @@
 
     <owl:ObjectProperty rdf:about="http://vocab.bike.re.kr/cdt#context">
         <comment xml:lang="en">
-    context refers to a context in which the template description entity appears.
+    Links to a context in which the template description entity appears.
     </comment>
         <domain rdf:resource="http://vocab.bike.re.kr/cdt#TemplateDescriptionEntity"/>
         <isDefinedBy rdf:resource="http://vocab.bike.re.kr/cdt"/>
@@ -227,22 +273,32 @@
         <vs:term_status xml:lang="en">unstable</vs:term_status>
     </owl:ObjectProperty>
 
+    <owl:DatatypeProperty rdf:about="http://vocab.bike.re.kr/cdt#department">
+        <comment xml:lang="en">
+    The department where the clinical document template is defined and used.
+    </comment>
+        <domain rdf:resource="http://vocab.bike.re.kr/cdt#ClinicalDocumentTemplate"/>
+        <isDefinedBy rdf:resource="http://vocab.bike.re.kr/cdt"/>
+        <label xml:lang="en">department</label>
+        <range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
+        <vs:term_status xml:lang="en">archaic</vs:term_status>
+    </owl:DatatypeProperty>
+
     <owl:DatatypeProperty rdf:about="http://vocab.bike.re.kr/cdt#filename">
         <comment xml:lang="en">
-    filename describes a name of the file in which the clinical document
-    template is stored.
+    The name of the file in which the clinical document template is stored.
     </comment>
         <domain rdf:resource="http://vocab.bike.re.kr/cdt#ClinicalDocumentTemplate"/>
         <isDefinedBy rdf:resource="http://vocab.bike.re.kr/cdt"/>
         <label xml:lang="en">filename</label>
-        <range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <range rdf:resource="http://www.w3.org/2000/01/rdf-schema#Literal"/>
         <vs:term_status xml:lang="en">archaic</vs:term_status>
     </owl:DatatypeProperty>
 
     <owl:ObjectProperty rdf:about="http://vocab.bike.re.kr/cdt#source">
         <comment xml:lang="en">
-    source identifies an instance that is the source or origin of the directed
-    binary or n-ary relation.
+    Links to an instance that is a source or origin of the directed binary
+    or n-ary relation.
     </comment>
         <domain rdf:resource="http://vocab.bike.re.kr/cdt#Relation"/>
         <isDefinedBy rdf:resource="http://vocab.bike.re.kr/cdt"/>
@@ -252,8 +308,8 @@
 
     <owl:ObjectProperty rdf:about="http://vocab.bike.re.kr/cdt#target">
         <comment xml:lang="en">
-    target identifies an instance that is the target of the directed binary or
-    n-ary relation.
+    Links to an instance that is a target of the directed binary or n-ary
+    relation.
     </comment>
         <domain rdf:resource="http://vocab.bike.re.kr/cdt#Relation"/>
         <isDefinedBy rdf:resource="http://vocab.bike.re.kr/cdt"/>
@@ -261,7 +317,15 @@
         <vs:term_status xml:lang="en">unstable</vs:term_status>
     </owl:ObjectProperty>
 
-    <owl:Class rdf:about="http://xmlns.com/foaf/0.1/Agent">
+    <owl:Class rdf:about="http://www.w3.org/ns/adms#SemanticAsset">
+        <isDefinedBy rdf:resource="http://www.w3.org/ns/adms"/>
+    </owl:Class>
+
+    <owl:ObjectProperty rdf:about="http://www.w3.org/ns/adms#status">
+        <isDefinedBy rdf:resource="http://www.w3.org/ns/adms"/>
+    </owl:ObjectProperty>
+
+    <owl:Class rdf:about="http://xmlns.com/foaf/0.1/Organization">
         <isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/"/>
     </owl:Class>
 
