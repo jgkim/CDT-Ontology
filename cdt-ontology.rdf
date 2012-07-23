@@ -70,20 +70,26 @@
         <label xml:lang="en">title</label>
     </owl:DatatypeProperty>
 
+    <owl:ObjectProperty rdf:about="http://purl.org/dc/terms/type">
+        <isDefinedBy rdf:resource="http://purl.org/dc/terms/"/>
+    </owl:ObjectProperty>
+
     <owl:Ontology rdf:about="http://vocab.bike.re.kr/cdt">
         <rdf:type rdf:resource="http://www.w3.org/ns/adms#SemanticAsset"/>
         <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2011-12-20+09:00</dcterms:created>
         <dcterms:creator rdf:parseType="Resource">
             <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
-            <owl:sameAs rdf:nodeID="b1"/>
+            <owl:sameAs rdf:resource="http://bike.re.kr/id/people/sjnam"/>
+            <foaf:mbox_sha1sum>b413a63576e5baf0f1785ea090420586265dc848</foaf:mbox_sha1sum>
             <foaf:name xml:lang="en">Sejin Nam</foaf:name>
             <foaf:name xml:lang="ko">남세진</foaf:name>
         </dcterms:creator>
         <dcterms:creator rdf:parseType="Resource">
             <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+            <owl:sameAs rdf:resource="http://bike.re.kr/id/people/jgkim"/>
             <owl:sameAs rdf:resource="http://jayg.me/"/>
-            <owl:sameAs rdf:nodeID="b2"/>
             <foaf:homepage rdf:resource="http://jayg.org/"/>
+            <foaf:mbox_sha1sum>a637717b7e34b83694018e8fdd3ff334fffcd4f3</foaf:mbox_sha1sum>
             <foaf:name xml:lang="en">James G. Kim</foaf:name>
             <foaf:name xml:lang="ko">김보람</foaf:name>
         </dcterms:creator>
@@ -98,11 +104,12 @@
         <dcterms:publisher rdf:parseType="Resource">
             <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Organization"/>
             <dcterms:title xml:lang="en">Biomedical Knowledge Engineering Laboratory, Seoul National University</dcterms:title>
-            <owl:sameAs rdf:resource="http://bike.re.kr/me"/>
+            <owl:sameAs rdf:resource="http://bike.re.kr/id/bike"/>
             <foaf:homepage rdf:resource="http://bike.re.kr/"/>
             <foaf:homepage rdf:resource="http://bike.snu.ac.kr/"/>
-            <foaf:member rdf:nodeID="b1"/>
-            <foaf:member rdf:nodeID="b2"/>
+            <foaf:mbox_sha1sum>aba4ca3a6825fc773570932dba553d95e9209e91</foaf:mbox_sha1sum>
+            <foaf:member rdf:resource="http://bike.re.kr/id/people/jgkim"/>
+            <foaf:member rdf:resource="http://bike.re.kr/id/people/sjnam"/>
             <foaf:name xml:lang="en">BiKE, SNU</foaf:name>
         </dcterms:publisher>
         <dcterms:title xml:lang="en">CDT Ontology</dcterms:title>
@@ -336,6 +343,10 @@
     <owl:ObjectProperty rdf:about="http://xmlns.com/foaf/0.1/homepage">
         <isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/"/>
     </owl:ObjectProperty>
+
+    <owl:DatatypeProperty rdf:about="http://xmlns.com/foaf/0.1/mbox_sha1sum">
+        <isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/"/>
+    </owl:DatatypeProperty>
 
     <owl:ObjectProperty rdf:about="http://xmlns.com/foaf/0.1/member">
         <isDefinedBy rdf:resource="http://xmlns.com/foaf/0.1/"/>

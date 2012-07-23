@@ -28,6 +28,8 @@ adms:SemanticAsset a owl:Class ;
   rdfs:isDefinedBy <http://www.w3.org/ns/adms> .
 adms:status a owl:ObjectProperty ;
   rdfs:isDefinedBy <http://www.w3.org/ns/adms> .
+dcterms:type a owl:ObjectProperty ;
+    rdfs:isDefinedBy <http://purl.org/dc/terms/> .
 dcterms:description a owl:DatatypeProperty ;
   rdfs:isDefinedBy <http://purl.org/dc/terms/> .
 dcterms:publisher a owl:ObjectProperty ;
@@ -39,6 +41,8 @@ foaf:Person a owl:Class ;
 foaf:Organization a owl:Class ;
   rdfs:isDefinedBy <http://xmlns.com/foaf/0.1/> .
 foaf:name a owl:DatatypeProperty ;
+  rdfs:isDefinedBy <http://xmlns.com/foaf/0.1/> .
+foaf:mbox_sha1sum a owl:DatatypeProperty ;
   rdfs:isDefinedBy <http://xmlns.com/foaf/0.1/> .
 foaf:homepage a owl:ObjectProperty ;
   rdfs:isDefinedBy <http://xmlns.com/foaf/0.1/> .
@@ -58,21 +62,24 @@ foaf:member a owl:ObjectProperty ;
   rdfs:seeAlso <https://github.com/SNUBiKE/CDT-Ontology> ;
   dcterms:creator [
       a foaf:Person ;
-      owl:sameAs _:sjnam ;
+      owl:sameAs <http://bike.re.kr/id/people/sjnam> ;
       foaf:name "Sejin Nam"@en , "남세진"@ko ;
+      foaf:mbox_sha1sum "b413a63576e5baf0f1785ea090420586265dc848"
     ] , [
       a foaf:Person ;
-      owl:sameAs _:jgkim , <http://jayg.me/> ;
+      owl:sameAs <http://bike.re.kr/id/people/jgkim> , <http://jayg.me/> ;
       foaf:name "James G. Kim"@en , "김보람"@ko ;
-      foaf:homepage <http://jayg.org/> ;
+      foaf:mbox_sha1sum "a637717b7e34b83694018e8fdd3ff334fffcd4f3" ;
+      foaf:homepage <http://jayg.org/>
     ] ;
   dcterms:publisher [
       a foaf:Organization ;
-      owl:sameAs <http://bike.re.kr/me> ;
+      owl:sameAs <http://bike.re.kr/id/bike> ;
       foaf:name "BiKE, SNU"@en ;
       dcterms:title "Biomedical Knowledge Engineering Laboratory, Seoul National University"@en ;
+      foaf:mbox_sha1sum "aba4ca3a6825fc773570932dba553d95e9209e91" ;
       foaf:homepage <http://bike.re.kr/> , <http://bike.snu.ac.kr/> ;
-      foaf:member _:sjnam , _:jgkim
+      foaf:member <http://bike.re.kr/id/people/sjnam> , <http://bike.re.kr/id/people/jgkim>
     ] ;
   vann:preferredNamespaceUri "http://vocab.bike.re.kr/cdt#" ;
   vann:preferredNamespacePrefix "cdt" ;
