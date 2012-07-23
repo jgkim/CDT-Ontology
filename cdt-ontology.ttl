@@ -159,12 +159,12 @@ cdt:UsedAtRelation a owl:Class ;
   rdfs:isDefinedBy <http://vocab.bike.re.kr/cdt> ;
   vs:term_status "unstable"@en .
 
-cdt:ContainRelation a owl:Class ;
+cdt:ContainedInRelation a owl:Class ;
   rdfs:subClassOf cdt:TDERelation ;
-  rdfs:label "Contain Relation"@en ;
+  rdfs:label "ContainedIn Relation"@en ;
   rdfs:comment """
-    A Contain Relation is a TDE relation that represents inclusion of
-    template description entities.
+    A ContainedIn Relation is a TDE relation that represents template
+    description entities' belonging to other template description entities.
     """@en ;
   rdfs:isDefinedBy <http://vocab.bike.re.kr/cdt> ;
   vs:term_status "unstable"@en .

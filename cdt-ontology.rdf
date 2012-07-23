@@ -174,13 +174,13 @@
         <vs:term_status xml:lang="en">unstable</vs:term_status>
     </owl:Class>
 
-    <owl:Class rdf:about="http://vocab.bike.re.kr/cdt#ContainRelation">
+    <owl:Class rdf:about="http://vocab.bike.re.kr/cdt#ContainedInRelation">
         <comment xml:lang="en">
-    A Contain Relation is a TDE relation that represents inclusion of
-    template description entities.
+    A ContainedIn Relation is a TDE relation that represents template
+    description entities' belonging to other template description entities.
     </comment>
         <isDefinedBy rdf:resource="http://vocab.bike.re.kr/cdt"/>
-        <label xml:lang="en">Contain Relation</label>
+        <label xml:lang="en">ContainedIn Relation</label>
         <subClassOf rdf:resource="http://vocab.bike.re.kr/cdt#TDERelation"/>
         <vs:term_status xml:lang="en">unstable</vs:term_status>
     </owl:Class>
