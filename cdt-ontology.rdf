@@ -16,6 +16,7 @@
     </comment>
         <isDefinedBy rdf:resource="http://purl.org/dc/terms/"/>
         <label xml:lang="en">created</label>
+        <subPropertyOf rdf:resource="http://www.w3.org/ns/prov#generatedAtTime"/>
     </owl:DatatypeProperty>
 
     <owl:ObjectProperty rdf:about="http://purl.org/dc/terms/creator">
@@ -26,6 +27,7 @@
     </comment>
         <isDefinedBy rdf:resource="http://purl.org/dc/terms/"/>
         <label xml:lang="en">creator</label>
+        <subPropertyOf rdf:resource="http://www.w3.org/ns/prov#wasAttributedTo"/>
     </owl:ObjectProperty>
 
     <owl:DatatypeProperty rdf:about="http://purl.org/dc/terms/description">
@@ -44,6 +46,7 @@
     </comment>
         <isDefinedBy rdf:resource="http://purl.org/dc/terms/"/>
         <label xml:lang="en">modified</label>
+        <subPropertyOf rdf:resource="http://www.w3.org/ns/prov#generatedAtTime"/>
     </owl:DatatypeProperty>
 
     <owl:ObjectProperty rdf:about="http://purl.org/dc/terms/publisher">
@@ -59,6 +62,7 @@
     </comment>
         <isDefinedBy rdf:resource="http://purl.org/dc/terms/"/>
         <label xml:lang="en">references</label>
+        <subPropertyOf rdf:resource="http://www.w3.org/ns/prov#wasDerivedFrom"/>
     </owl:ObjectProperty>
 
     <owl:DatatypeProperty rdf:about="http://purl.org/dc/terms/title">
@@ -100,7 +104,7 @@
     version of the ontology at: https://github.com/SNUBiKE/CDT-Ontology
     </dcterms:description>
         <dcterms:license rdf:resource="http://creativecommons.org/licenses/by/3.0/"/>
-        <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2012-07-22+09:00</dcterms:modified>
+        <dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2013-05-13+09:00</dcterms:modified>
         <dcterms:publisher rdf:parseType="Resource">
             <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Organization"/>
             <dcterms:title xml:lang="en">Biomedical Knowledge Engineering Laboratory, Seoul National University</dcterms:title>
@@ -117,7 +121,7 @@
         <vann:preferredNamespacePrefix>cdt</vann:preferredNamespacePrefix>
         <vann:preferredNamespaceUri>http://vocab.bike.re.kr/cdt#</vann:preferredNamespaceUri>
         <seeAlso rdf:resource="https://github.com/SNUBiKE/CDT-Ontology"/>
-        <owl:versionInfo>0.5</owl:versionInfo>
+        <owl:versionInfo>0.6</owl:versionInfo>
         <adms:status rdf:resource="http://purl.org/adms/status/UnderDevelopment"/>
     </owl:Ontology>
 
