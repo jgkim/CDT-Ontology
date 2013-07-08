@@ -30,7 +30,7 @@ adms:SemanticAsset a owl:Class ;
 adms:status a owl:ObjectProperty ;
   rdfs:isDefinedBy <http://www.w3.org/ns/adms> .
 dcterms:type a owl:ObjectProperty ;
-    rdfs:isDefinedBy <http://purl.org/dc/terms/> .
+  rdfs:isDefinedBy <http://purl.org/dc/terms/> .
 dcterms:description a owl:DatatypeProperty ;
   rdfs:isDefinedBy <http://purl.org/dc/terms/> .
 dcterms:publisher a owl:ObjectProperty ;
